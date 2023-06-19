@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar (Android only) -->
+    <meta name="theme-color" content="#2196f3">
+    <!-- App title -->
+    <title>Alpha Assistant</title>
+    <!-- Path to Framework7 Library Bundle CSS -->
+    <link rel="stylesheet" href="css/framework7-bundle.css">
+    <!-- Material Design Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css">
+    <!-- Path to custom app styles-->
+    <link rel="stylesheet" href="css/index.css">
+  </head>
+  <body>
+    <!-- App root element --- Principal Div -->
+    <div id="app">
+
+      <!-- Main view, should have "view-main" class --- Holds all project content -->
+      <div class="view view-main">
+        <!-- Initial Page, "data-name" contains page name --- References the Page I'm working on -->
+        <div data-name="memory" class="page">
+
+          <!-- Componenets -->
+          <!-- Top Navbar -->
+          <div class="navbar border-bottom">
+            <div class="navbar-bg bg-black"></div>
+            <div class="navbar-inner memory-nav">
+                <a href="/index/" class="left padding-left txt-primary"><i class="mdi mdi-arrow-left"></i></a>
+                <div class="title txt-primary title-memory fw-bold"><i class="mdi mdi-brain"></i> Memories</div>
+                <a href="#" id="eraseMemories" class="right padding-right txt-primary"><i class="mdi mdi-database"></i></a>
+            </div>
+          </div>
+
+          <!-- Searchbar -->
+          <div class="searchbar-backdrop"></div>
+          <form class="searchbar">
+            <div class="searchbar-inner">
+              <!-- Data search field (filter) -->
+              <div class="searchbar-input-wrap">
+                <input class="input-custom" type="search" placeholder="Search" />
+                <i class="searchbar-icon txt-primary"></i>
+                <span class="input-clear-button txt-primary"></span>
+              </div>
+              <!-- Icon for erasing data entry -->
+              <span class="searchbar-disable-button txt-primary">Cancel</span>
+            </div>
+          </form>
+
+          <!-- Fab Button - Button for adding a new memory to the wizard -->
+          <div class="fab fab-extended fab-center-bottom">
+            <a href="#" data-popup=".question-popup" class="btn-primary-outline popup-open">
+              <!-- Icon Microphone -->
+              <i class="mdi mdi-plus"></i>
+              <!-- Text Button -->
+              <div class="fab-text">ADD MEMORY</div>
+            </a>
+          </div>
+
+          <!-- POPUP Questions -->
+          <div class="popup question-popup">
+            <div class="view">
+              <div class="page ">
+                <div class="navbar border-bottom-primary">
+                  <div class="navbar-bg bg-black"></div>
+                  <div class="navbar-inner">
+                    <div class="title txt-primary fw-bold">New Question</div>
+                    <div class="right">
+                      <!-- Link to close popup -->
+                      <a class="link popup-close txt-primary cancel"><i class="mdi mdi-close-circle"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="page-content bg-black">
+                  <div class="list no-hairlines-md list-strong-ios list-dividers-ios inset-ios">
+                    <ul>
+                      <!-- Field to enter the typed question -->
+                      <li class=" item-input">
+                        <div class="item-inner bg-black padding-left">
+                          <div class="item-title item-label txt-primary fw-bold">Question Title</div>
+                          <div class="item-input-wrap">
+                            <input id="writtenQuestion" class="input-custom border-bottom-primary" type="text">
+                            <span class="input-clear-button txt-primary"></span>
+                          </div>
+                        </div>
+                      </li>
+                      <!-- Field populated automatically as the assistant understands the user's speech -->
+                      <li class=" item-input">
+                        <div class="item-inner bg-black padding-left">
+                          <div class="item-title item-label txt-primary fw-bold">What the assistant understood</div>
+                          <div class="item-input-wrap">
+                            <input id="questionUnderstood" class="input-custom border-bottom-primary" type="text">
+                            <span class="input-clear-button txt-primary"></span>
+                          </div>
+                        </div>
+                      </li>
+                    </ul> 
+                  </div>
+
+                  <!-- Fab Button Left - Memory save button-->
+                  <div id="fabSave" class="fab fab-extended fab-left-bottom">
+                    <a href="#" id="saveQuestion" class="btn-success-outline">
+                      <!-- Icon button -->
+                      <i class="mdi mdi-content-save"></i>
+                      <!-- Text Button -->
+                      <div class="fab-text">SAVE</div>
+                    </a>
+                  </div>
+
+                  <!-- Fab Button Left - Memory update button -->
+                  <div id="fabUpdate" class="fab fab-extended fab-left-bottom display-none">
+                    <a href="#" id="updateQuestion" class="btn-warning-outline">
+                      <!-- Icon button -->
+                      <i class="mdi mdi-refresh"></i>
+                      <!-- Text Button -->
+                      <div class="fab-text">UPDATE</div>
+                    </a>
+                  </div>
+
+                  <!-- Fab Button Center - Button to allow question entry via user speech -->
+                  <div class="fab fab-extended fab-center-bottom">
+                    <a href="#" id="recordQuestion" class="btn-primary-outline">
+                      <!-- Icon Button -->
+                      <div class="fab-text"><i class="mdi mdi-microphone"></i></div>
+                    </a>
+                  </div>
+
+                  <!-- Fab Button Right - Button to cancel adding memory and close the popup -->
+                  <div class="fab fab-extended fab-right-bottom">
+                    <a href="#" class="btn-danger-outline popup-close cancel">
+                      <!-- Icon button -->
+                      <i class="mdi mdi-cancel"></i>
+                      <!-- Text Button -->
+                      <div class="fab-text">CANCEL</div>
+                    </a>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- POPUP Response -->
+          <div class="popup response-popup">
+            <div class="view">
+              <div class="page ">
+                <div class="navbar border-bottom-primary">
+                  <div class="navbar-bg bg-black"></div>
+                  <div class="navbar-inner">
+                    <div class="title txt-primary fw-bold">Assistant's Response</div>
+                    <div class="right">
+                      <!-- Link to close popup -->
+                      <a class="link popup-close txt-primary"><i class="mdi mdi-close-circle"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="page-content bg-black">
+                  <div class="block">
+                    <span id="itemIdResponse" class="badge padding-left padding-right color-blue"></span>
+                  </div>
+                  <div class="list no-hairlines-md list-strong-ios list-dividers-ios inset-ios">
+                    <ul>
+                      <!-- Field to enter the answer to the question asked -->
+                      <li class=" item-input">
+                        <div class="item-inner bg-black padding-left">
+                          <div class="item-title item-label txt-primary fw-bold">Written answer</div>
+                          <div class="item-input-wrap">
+                            <input id="inputWritten" class="input-custom border-bottom-primary" type="text">
+                            <span class="input-clear-button txt-primary"></span>
+                          </div>
+                        </div>
+                      </li>
+                      <!-- Field to enter the answer that the assistant will say to the question asked -->
+                      <li class=" item-input">
+                        <div class="item-inner bg-black padding-left">
+                          <div class="item-title item-label txt-primary fw-bold">Spoken answer</div>
+                          <div class="item-input-wrap">
+                            <input id="inputSpoken" class="input-custom border-bottom-primary" type="text">
+                            <span class="input-clear-button txt-primary"></span>
+                          </div>
+                        </div>
+                      </li>
+                    </ul> 
+                  </div>
+
+                  <!-- Fab Button Left - Memory save button -->
+                  <div class="fab fab-extended fab-left-bottom">
+                    <a href="#" id="saveResponse" class="btn-warning-outline">
+                      <i class="mdi mdi-content-save"></i>
+                      <!-- Text Button -->
+                      <div class="fab-text">SAVE</div>
+                    </a>
+                  </div>
+
+                  <!-- Fab Button Center - Button to hear what the assistant will say -->
+                  <div class="fab fab-extended fab-center-bottom">
+                    <a href="#" id="speakAnswer" class="btn-primary-outline">
+                      <!-- Icon Button -->
+                      <div class="fab-text"><i class="mdi mdi-bullhorn"></i></div>
+                    </a>
+                  </div>
+
+                  <!-- Fab Button Right - Button to cancel adding response and close the popup -->
+                  <div class="fab fab-extended fab-right-bottom">
+                    <a href="#" class="btn-danger-outline popup-close">
+                      <i class="mdi mdi-cancel"></i>
+                      <!-- Text Button -->
+                      <div class="fab-text">CANCEL</div>
+                    </a>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scrollable page content --- Holds the Main Content of the App -->
+          <div class="page-content bg-black txt-primary margin-top">
+            <!-- Indicates that the assistant has no memory -->
+            <div id="noMemories" class="display-none">
+              <div class="fw-bold block-title txt-primary">No memory learned yet</div>
+            </div>
+
+            <div id="withMemories" class="display-none">
+              <!-- Indicates that the assistant has x memories -->
+              <div class="fw-bold block-title txt-primary">Learned memories (<b id="amountLearned"></b>)</div>
+              <div class="list media-list list-outline-ios list-strong-ios list-dividers-ios">
+                <!-- Memory list. It is created dynamically, according to the amount of memory saved in the database. -->
+                <ul id="listOfQuestions">
+  
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Path to Framework7 Library Bundle JS-->
+    <script type="text/javascript" src="js/lib/framework7-bundle.js"></script>
+    <!-- Typed js-->
+    <script type="text/javascript" src="js/lib/typed.js"></script>
+    <!-- Path to App js-->
+    <script type="text/javascript" src="js/router.js"></script>
+  </body>
+</html>

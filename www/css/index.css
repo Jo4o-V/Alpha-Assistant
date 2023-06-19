@@ -1,0 +1,111 @@
+/* Root colors */
+:root {
+    --color-black: rgb(0, 0, 0);
+    --color-primary: rgb(29, 157, 241);
+    --color-secondary: rgb(255, 74, 170);
+    --color-success: rgb(17, 223, 17);
+    --color-warning: rgb(223, 223, 17);
+    --color-danger: rgb(223, 17, 17);
+}
+
+.bg-black {
+    background: var(--color-black) !important;
+}
+
+.txt-primary {
+    color: var(--color-primary) !important;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.btn-primary-outline {
+    background: var(--color-black) !important;
+    border: 1px solid var(--color-primary) !important;
+    color: var(--color-primary) !important;
+}
+
+.btn-secondary-outline {
+    background: var(--color-black) !important;
+    border: 1px solid var(--color-secondary) !important;
+    color: var(--color-secondary) !important;
+}
+
+.btn-success-outline {
+    background: var(--color-black) !important;
+    border: 1px solid var(--color-success) !important;
+    color: var(--color-success) !important;
+}
+
+.btn-warning-outline {
+    background: var(--color-black) !important;
+    border: 1px solid var(--color-warning) !important;
+    color: var(--color-warning) !important;
+}
+
+.btn-danger-outline {
+    background: var(--color-black) !important;
+    border: 1px solid var(--color-danger) !important;
+    color: var(--color-danger) !important;
+}
+
+.border-bottom-primary {
+    border-bottom: 1px solid var(--color-primary) !important;
+    margin-top: 3.5px !important;
+}
+
+.border-bottom {
+    border-bottom: 1px solid var(--color-primary) !important;
+}
+
+.input-custom {
+    background: var(--color-black) !important;
+    color: var(--color-primary) !important;
+}
+
+.input-custom::placeholder,
+.icon-custom {
+    color: var(--color-primary) !important;
+}
+
+.fw-bold {
+    font-weight: bold !important;
+}
+
+.memory-nav .title-memory {
+    margin-left: 8.2rem;
+}
+
+.margin-top {
+    margin-top: 40px !important;
+    margin-bottom: 25px !important;
+}
+
+.menu {
+    margin-bottom: 3px !important;
+    margin-left: 16px !important;
+}
+
+/* Style searchbar */
+form.searchbar {
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
+    border: 1px solid var(--color-primary) !important;
+    border-radius: 25px;
+}
+
+/* Style image */
+img {
+    max-width: 400px;
+}
+
+a.txt-primary,
+i.txt-primary {
+    color: var(--color-primary) !important;
+}
+
+li.txt-primary {
+    background: var(--color-black);
+    color: var(--color-primary) !important;
+}

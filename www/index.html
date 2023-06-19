@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar (Android only) -->
+    <meta name="theme-color" content="#2196f3">
+    <!-- App title -->
+    <title>Alpha Assistant</title>
+    <!-- Path to Framework7 Library Bundle CSS -->
+    <link rel="stylesheet" href="css/framework7-bundle.css">
+    <!-- Material Design Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css">
+    <!-- Path to custom app styles-->
+    <link rel="stylesheet" href="css/index.css">
+  </head>
+  <body>
+    <!-- App root element --- Principal Div -->
+    <div id="app">
+
+      <!-- Main view, should have "view-main" class --- Holds all project content -->
+      <div class="view view-main">
+        <!-- Initial Page, "data-name" contains page name --- References the Page I'm working on -->
+        <div data-name="home" class="page">
+
+          <!-- Componenets -->
+          <!-- Top Navbar -->
+          <div class="navbar">
+            <div class="navbar-bg bg-black"></div>
+            <div class="navbar-inner  justify-content-center">
+              <div class="title txt-primary fw-bold">Alpha Assistant</div>
+            </div>
+          </div>
+
+          <!-- Bottom Toolbar - Is not being used -->
+          <!-- <div class="toolbar toolbar-bottom">
+            <div class="toolbar-inner"> -->
+              <!-- Toolbar links -->
+              <!-- <a href="#" class="link">Link 1</a>
+              <a href="#" class="link">Link 2</a>
+            </div>
+          </div> -->
+
+          <!-- Fab Button - Button to talk to the Assistant looking for data from the Local Database (from the client) -->
+          <div class="fab fab-extended fab-left-bottom">
+            <a id="btn-speak" class="btn-primary-outline">
+              <!-- Icon Microphone -->
+              <i class="mdi mdi-microphone-outline"></i>
+              <!-- Text Button -->
+              <div class="fab-text">SPEAK - Alpha</div>
+            </a>
+          </div>
+
+          <!-- Fab Button - Button to talk to the Assistant fetching data from the GPT Chat API -->
+          <div class="fab fab-extended fab-right-bottom">
+            <!-- Microphone indicating assistant is listening -->
+            <div id="microphoneListeningGPT" class="display-none">
+              <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_znayulli.json"  background="transparent"  speed="1"  style="width: 100px; height: 100px;"  loop  autoplay></lottie-player>
+            </div>
+
+            <!-- Microphone indicating assistant is thinking -->
+            <div id="thinkingGPT" class="display-none fab-center-bottom">
+              <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_izYwnC.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+            </div>
+
+            <!-- Home microphone button -->
+            <a id="btn-speak-chatgpt" class="btn-primary-outline">
+              <!-- Icon Microphone -->
+              <i class="mdi mdi-microphone-outline"></i>
+              <!-- Text Button -->
+              <div class="fab-text">SPEAK - ChatGPT</div>
+            </a>
+          </div>
+
+          <!-- Scrollable page content --- Holds the Main Content of the App -->
+          <div class="page-content bg-black txt-primary text-align-center">
+            <!-- Link to memories page -->
+            <a href="/memory/" class="link">
+                <!-- Image (gif) representing the Assistant -->
+                <img src="img/alpha.gif" alt="">
+            </a>
+            <!-- Area for viewing the assistant's speech -->
+            <div class="block txt-primary">
+              <p id="question" class="display-none"></p> 
+            </div>
+            <div class="block txt-primary">
+              <p id="response"></p>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Path to Framework7 Library Bundle JS-->
+    <script type="text/javascript" src="js/lib/framework7-bundle.js"></script>
+    <!-- Lottie Files -->
+    <script src="js/lib/lottie-player.js"></script>
+    <!-- Typed js-->
+    <script type="text/javascript" src="js/lib/typed.js"></script>
+    <!-- jQuery 3.7.0 -->
+    <script type="text/javascript" src="js/lib/jquery-3.7.0.min.js"></script>
+    <!-- Path to App js -->
+    <script type="text/javascript" src="js/router.js"></script>
+    <!-- Cordova -->
+    <script type="text/javascript" src="cordova.js"></script>
+
+  </body>
+</html>

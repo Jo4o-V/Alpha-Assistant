@@ -70,7 +70,7 @@ function callAPI(question) {
     $("#thinkingGPT").removeClass('display-none');
 
     // Create connection with chatGPT
-    var apiKey = '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';
+    var apiKey = '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';
     var apiURL = 'https://api.openai.com/v1/chat/completions';
 
     $.ajax({
